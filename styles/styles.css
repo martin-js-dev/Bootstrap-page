@@ -1,0 +1,14 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-section {
+  background-color: #cccccc;
+  /* Used if the image is unavailable */
+  height: 500px;
+  /* You must set a specified height */
+}
+/*# sourceMappingURL=styles.css.map */
