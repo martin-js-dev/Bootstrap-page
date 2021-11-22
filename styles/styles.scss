@@ -1,4 +1,201 @@
 
+@mixin text-shadow ($string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+	text-shadow: $string;
+}
+@mixin box-shadow ($string) {
+	-webkit-box-shadow: $string;
+	-moz-box-shadow:    $string;
+	box-shadow:         $string;
+}
+
+@mixin box-sizing ($type: border-box) {
+	-webkit-box-sizing: $type;
+	-moz-box-sizing:    $type;
+	box-sizing:         $type;
+}
+
+@mixin border-radius ($radius: 5px) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius:    $radius;
+	-ms-border-radius:     $radius;
+    -o-border-radius:      $radius;
+	border-radius:         $radius;
+
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
+@mixin border-radiuses ($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
+	-webkit-border-top-right-radius:    $topright;
+	-webkit-border-bottom-right-radius: $bottomright;
+	-webkit-border-bottom-left-radius:  $bottomleft;
+	-webkit-border-top-left-radius:     $topleft;
+
+	-moz-border-radius-topright:        $topright;
+	-moz-border-radius-bottomright:     $bottomright;
+	-moz-border-radius-bottomleft:      $bottomleft;
+	-moz-border-radius-topleft:         $topleft;
+
+	border-top-right-radius:            $topright;
+	border-bottom-right-radius:         $bottomright;
+	border-bottom-left-radius:          $bottomleft;
+	border-top-left-radius:             $topleft;
+
+	-moz-background-clip:    padding; 
+	-webkit-background-clip: padding-box; 
+	background-clip:         padding-box; 
+}
+
+@mixin opacity ($opacity: 0.5) {
+	-webkit-opacity: 	$opacity;
+	-moz-opacity: 		$opacity;
+	opacity: 		$opacity;
+}
+
+@mixin gradient ($startColor: #eee, $endColor: white) {
+	background-color: $startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+	background: -webkit-linear-gradient(top, $startColor, $endColor);
+	background: -moz-linear-gradient(top, $startColor, $endColor);
+	background: -ms-linear-gradient(top, $startColor, $endColor);
+	background: -o-linear-gradient(top, $startColor, $endColor);
+}
+@mixin horizontal-gradient ($startColor: #eee, $endColor: white) {
+ 	background-color: $startColor;
+	background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+	background-image: -moz-linear-gradient(left, $startColor, $endColor);
+	background-image: -ms-linear-gradient(left, $startColor, $endColor);
+	background-image: -o-linear-gradient(left, $startColor, $endColor);
+}
+
+@mixin animation ($name, $duration: 300ms, $delay: 0, $ease: ease) {
+	-webkit-animation: $name $duration $delay $ease;
+	-moz-animation:    $name $duration $delay $ease;
+	-ms-animation:     $name $duration $delay $ease;
+}
+
+@mixin transition ($transition) {
+	-webkit-transition: $transition;  
+	-moz-transition:    $transition;
+	-ms-transition:     $transition; 
+	-o-transition:      $transition;  
+}
+@mixin transform($string){
+	-webkit-transform:  $string;
+	-moz-transform: 	 $string;
+	-ms-transform: 		 $string;
+	-o-transform: 		 $string;
+}
+@mixin scale ($factor) {
+	-webkit-transform: scale($factor);
+	-moz-transform: 	 scale($factor);
+	-ms-transform: 		 scale($factor);
+	-o-transform: 		 scale($factor);
+}
+@mixin rotate ($deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: 	 rotate($deg);
+	-ms-transform: 		 rotate($deg);
+	-o-transform: 		 rotate($deg);
+}
+@mixin skew ($deg, $deg2) {
+	-webkit-transform:       skew($deg, $deg2);
+	-moz-transform: 	 skew($deg, $deg2);
+	-ms-transform: 		 skew($deg, $deg2);
+	-o-transform: 		 skew($deg, $deg2);
+}
+@mixin translate ($x, $y:0) {
+	-webkit-transform:       translate($x, $y);
+	-moz-transform: 	 translate($x, $y);
+	-ms-transform: 		 translate($x, $y);
+	-o-transform: 		 translate($x, $y);
+}
+@mixin translate3d ($x, $y: 0, $z: 0) {
+	-webkit-transform:       translate3d($x, $y, $z);
+	-moz-transform: 	 translate3d($x, $y, $z);
+	-ms-transform: 		 translate3d($x, $y, $z);
+	-o-transform: 		 translate3d($x, $y, $z);
+}
+@mixin perspective ($value: 1000) {
+	-webkit-perspective: 	$value;
+	-moz-perspective: 	$value;
+	-ms-perspective: 	$value;
+	perspective: 		$value;
+}
+@mixin transform-origin ($x:center, $y:center) {
+	-webkit-transform-origin: $x $y;
+	-moz-transform-origin:    $x $y;
+	-ms-transform-origin:     $x $y;
+	-o-transform-origin:      $x $y;
+}
+
+@mixin reset-box-sizing ($size:content-box) {
+  &,
+  *,
+  *:before,
+  *:after {
+    @include box-sizing($size);
+  }
+}
+
+@mixin truncate ($max-width: 250px) {
+  max-width: $max-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin background-size ($string: contain) {
+    -webkit-background-size: $string;
+    -moz-background-size: $string;
+    -o-background-size: $string;
+    background-size: $string;
+}
+
+@mixin placeholder ($color: #999) {
+    &::-webkit-input-placeholder { /* WebKit browsers */
+        color: $color;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: $color;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: $color;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: $color;
+    }
+}
+
+
+
+//*************************** Theme Colours****************************/
+// Define theme colour scheme
+$color-primary: #40babd;
+$text-color: #494d55;
+$text-color-secondary: lighten($text-color, 10%);
+$text-grey: lighten($text-color-secondary, 25%);
+$light-grey: #c3c3c3;
+$smoky-white: #f5f5f5;
+$divider: #f3f3f3; 
+
+$color-green: #75c181;
+$color-blue: #58bbee;
+$color-orange: #F8A13F;
+$color-pink: #EA5395;
+$color-purple: #8A40A7;
+$color-yellow: #F2B542;
+
+$facebook: #3b5998;
+$twitter: #55acee;
+$google: #dd4b39;
+$github: #444;
+$dribbble: #EC4D8B;
+$linkedin: #1E6FBA;
+
+//*************************** Theme Styles ****************************/
+
 
 body{
     box-sizing: border-box;
@@ -12,4 +209,424 @@ body{
   background-color: #cccccc; /* Used if the image is unavailable */
   height: 500px; /* You must set a specified height */
   
+}
+
+p {
+	margin-bottom: 15px;
+	line-height: 1.5;
+}
+
+a {
+	color: darken($color-primary, 5%);
+	@include transition (all 0.4s ease-in-out);
+	&:hover {
+		text-decoration: underline;
+		color: darken($color-primary, 10%);
+	}
+	&:active {
+		text-decoration: none;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+.btn, a.btn {
+	@include transition (all 0.4s ease-in-out);
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.5;
+	.fa {
+		margin-right: 5px;
+	}
+	&:focus {
+	    @include box-shadow(none);
+    }
+
+}
+
+.btn-cta, a.btn-cta {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 30px;
+}
+
+.btn-primary {
+	background: $color-primary;
+	border: 1px solid $color-primary;
+	color: #fff;
+	&:hover, &:focus, &:active, &.active, &.hover {
+		background: darken($color-primary, 5%);
+		color: #fff;
+		border: 1px solid darken($color-primary, 5%);
+	}
+
+}
+
+.btn-inverse {
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid transparent;
+	color: #fff;
+	&:hover, &:focus, &:active, &.active, &.hover {
+		background: rgba(0, 0, 0, 0.5);
+		color: #fff;
+		border: 1px solid transparent;
+	}
+
+}
+
+/* ======= About Section ======= */
+.about-section {
+  padding-top: 90px;
+  .section-title {
+      margin: 0;
+      margin-bottom: 15px;
+      font-size: 36px;
+      font-weight:300;
+  }
+  .intro {
+      color: $text-grey;
+      font-size: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+  }
+  
+  .items-wrapper {
+      margin-bottom: 60px;
+      .figure-holder {
+          margin-bottom: 15px;
+          vertical-align:bottom;
+      }
+      
+      .figure-image {
+        max-width: 220px;
+      }
+      
+      
+      .item-inner {
+          padding: 30px;
+      }
+      .item-title {
+          color: $color-primary;
+          font-size: 18px;
+          font-weight: bold;
+          margin:0;
+          margin-bottom: 15px;
+      }
+      .item-desc {
+          color: $text-color-secondary;
+      }
+  }
+  
+  
+}
+
+.technologies {
+  margin-bottom: 30px;
+  .list-inline-item {
+      margin-right: 15px;
+      &:last-child {
+          margin-right: 0;
+      }
+  }
+}
+
+.testimonials {
+  background: $color-primary;
+}
+
+
+.testimonials-inner {
+  padding: 60px 30px;
+  position: relative;
+  max-width: 800px;
+  
+  
+  .profile-holder {
+      position: absolute;
+      left: 30px;
+      text-align: center;
+  }
+  
+  .profile-image {
+      display: inline-block;
+      margin: 0 auto;
+  }
+  .quote {
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      margin-left: 130px;
+      border-left: none;
+      margin-bottom: 0;
+      font-size: 14px;
+      min-height: 100px;
+      @include border-radius(4px);
+      position: relative;
+      padding:15px;
+      &:before {
+          position: absolute;
+          left: -10px;
+          top:30px;
+          content:"";
+          width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-right:10px solid rgba(0, 0, 0, 0.2); 
+      }
+  }
+}
+
+
+
+
+
+
+/* ======= Team Section ======= */
+.team-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background: $smoky-white;
+  .section-title {
+      margin: 0;
+      margin-bottom: 15px;
+      font-size: 36px;
+      font-weight:300;
+  }
+  .intro {
+      color: $text-grey;
+      font-size: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+  }
+  .story {
+      
+      margin: 0 auto;
+      margin-bottom: 60px;
+      max-width: 800px;
+  }
+  .profile-image {
+      width: 200px;
+      height: 200px;
+  }
+  .members-wrapper{
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  
+  .item-inner {
+      padding: 30px;
+      background: #fff;
+      @include border-radius(8px);
+      height: 100%;
+  }
+  .member-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: $color-primary;
+  }
+  .member-title {
+      font-size: 16px;
+      margin-top:0;
+      margin-bottom: 15px;
+      color: $text-color-secondary;
+  }
+  
+  .member-desc {
+      color: $text-color-secondary;
+  }
+
+}
+
+
+/* ======= Pricing Section ======= */
+.pricing-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  .section-title {
+      margin: 0;
+      margin-bottom: 15px;
+      font-size: 36px;
+      font-weight:300;
+  }
+  .intro {
+      color: $text-grey;
+      font-size: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+  }
+}
+
+.pricing-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  .item {
+      margin-bottom: 30px;
+  }
+  .item-inner {
+      color: #fff;
+      padding: 30px;
+      @include border-radius(8px);
+      background: $color-primary;
+      height: 100%;
+      a {
+          color: rgba(0, 0, 0, 0.4);
+      }
+  }
+  .item-1 {
+      .item-inner {
+          background: $color-green;
+      }
+  }
+  .item-2 {
+      .item-inner {
+          background: $color-blue;
+      }
+  }
+  .item-3 {
+      .item-inner {
+          background: $color-orange;
+      }
+  }
+  .item-heading {
+      font-weight: 800;
+      font-size: 18px;
+      margin: 0;
+      min-height: 60px;
+  }
+  .item-heading-desc {
+    font-size: 14px;
+    font-weight: normal;
+    display: inline-block;
+    line-height: 3;
+  }
+  .price-figure {
+      font-size:46px;
+      margin-bottom: 15px;
+      .currency {
+          vertical-align:super;
+          font-size: 26px;
+          @include opacity(0.6);
+      }
+      .number {
+          font-weight: 500;
+      }
+  }
+
+  a.btn-inverse {
+      color: #fff;
+  }
+}
+
+
+
+.reviews-section {
+
+	.item-inner {
+		height: 100%;
+		position: relative;
+	}
+	
+	.icon-holder {
+		position: absolute;
+		left: 50%;
+		top: -18px;
+		margin-left: -18px;
+		display: inline-block;
+		width: 36px;
+		height: 36px;
+		background: lighten(#f2f2f2, 20%);
+		color: #fff;
+		text-align: center;
+		@include border-radius(50%);
+		padding-top: 6px;
+	}
+	.source-profile {
+		width: 60px;
+	}
+	.source-info {
+		font-size: 0.875rem;
+	}
+	.quote {
+		font-style:italic;
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Venue */
+.venue-section {
+
+	.figure {
+		position: relative;
+		
+		img {
+			border: 10px solid #fff;
+			max-width: 100%;
+			
+		}
+		&.figure-1 {
+			z-index: 1;
+			@include scale(1.1);
+		}
+		&.figure-2 {
+			@include rotate(2);
+			z-index: 2;
+			
+			
+		}
+		&.figure-3 {
+			@include rotate(358);
+			z-index: 3;
+			margin-top: -2rem;
+		}
+		&.figure-4 {
+			z-index: 3;
+			@include scale(1.1);
+		}
+	}
+	.grid-item {
+		border: 1px solid #fff;
+		
+		.title {
+			font-size: 1.125rem;
+		}
+		.svg-inline--fa {
+			font-size: 1.25rem;
+		}
+	}
+}
+
+
+/* Sponsors */
+.logo-item {
+	margin-bottom: 1rem;
+	img {
+		max-width: 100%;
+	}
+}
+/* footer */
+.footer {
+	color: #fff;
+	a {
+		color: #fff;
+		&:hover {
+			color: #fff;
+		}
+	}
+	.social-list {
+		font-size: 1.5rem;
+	}
 }
